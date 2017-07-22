@@ -1,0 +1,24 @@
+#main{
+    /*Fuck IE6~9*/
+    -webkit-column-width: 202px;
+    -moz-column-width: 202px;
+    column-width: 202px;
+    /*-webkit-column-count: 6;
+    -moz-column-count: 6;
+    column-count: 6;*/
+}
+.box{
+    padding: 10px 0 0 15px;
+}
+.pic{
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #CCCCCC;
+    width: 165px;
+}
+.pic img{
+    display: block;
+    width: 165px;
+    height: auto;
+}
