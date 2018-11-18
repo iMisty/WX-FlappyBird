@@ -25,8 +25,59 @@ export class Director {
         this.dataStore.get('pencils').push(new DownPencil(top));
     }
 
-    run() {
+    birdsEvent() {
+        for(let i = 0;i < 3;i++) {
+            this.dataStore.get('birds').y[i] =
+                this.dataStore.get('birds').birdsY[i];
+        }
+        this.dataStore.get('birds').time = 0;
+    }
+    // 判断撞击铅笔
+    static isStrike(bird, pencil) {
+        let s = false;
+        if(bird.top > pencil.bottom || bird.bottom < pencil.top ||
+        bird.right < pencil.left || bird.left > pencil.right) {
+            s = true;
+        }
+        return !s;
+    }
 
+    // 判断撞击地板
+    check() {
+        const birds = this.dataStore.get('birds');
+        const land = this.dataStore.get('land');
+        const pencils = this.dataStore.get('pencils');
+
+        if (birds.birdsY[0] + birds.birdsHeight >= land.y){
+            this.isGameOver = true;
+            return;
+        }
+
+        const birdBorder = {
+            top: birds.y[0],
+            bottom: birds.birdsY[0] + birds.birdsHeight[0],
+            left: birds.birdsX[0],
+            right: birds.birdsX[0] + birds.birdsWidth[0]
+        };
+
+        const length = pencils.length;
+        for (let i = 0;i < length; i++) {
+            const pencil = pencils[i];
+            const pencilBorder = {
+                top: pencil.y,
+                bottom: pencil.y + pencil.height,
+                left: pencil.x,
+                right: pencil.x + pencil.width
+            };
+            if(Director.isStrike(birdBorder, pencilBorder)) {
+                this.isGameOver = true;
+                return;
+            }
+        }
+    }
+
+    run() {
+        this.check();
         if(!this.isGameOver) {
             this.dataStore.get('background').draw();
 

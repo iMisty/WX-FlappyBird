@@ -4,7 +4,7 @@ import {BackGround} from "./js/runtime/BackGround.js";
 import {Land} from "./js/runtime/Land.js";
 import {DataStore} from "./js/base/DataStore.js";
 import {Director} from "./js/Director.js";
-import {Birds} from "./js/player/Birds.j";
+import {Birds} from "./js/player/Birds.js";
 
 export class Main {
     constructor() {
@@ -31,8 +31,21 @@ export class Main {
             .put('background',BackGround)
             .put('land',Land)
             .put('birds',Birds);
-
+        this.registerEvent();
         this.director.createPencil();
         Director.run();
     }
+
+    registerEvent() {
+        this.canvas.addEventListener('touchstart', e => {
+            // 屏蔽原生事件冒泡
+            e.preventDefault();
+            if(this.director.isGameOver){
+                this.init();
+            } else {
+                this.director.birdsEvent();
+            }
+        });
+    }
+
 }
