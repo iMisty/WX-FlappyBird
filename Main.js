@@ -4,6 +4,7 @@ import {BackGround} from "./js/runtime/BackGround.js";
 import {Land} from "./js/runtime/Land.js";
 import {DataStore} from "./js/base/DataStore.js";
 import {Director} from "./js/Director.js";
+import {Birds} from "./js/player/Birds.j";
 
 export class Main {
     constructor() {
@@ -28,7 +29,8 @@ export class Main {
         this.dataStore
             .put('pencils', [])
             .put('background',BackGround)
-            .put('land',Land);
+            .put('land',Land)
+            .put('birds',Birds);
 
         this.director.createPencil();
         Director.run();
