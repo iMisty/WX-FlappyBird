@@ -1,4 +1,3 @@
-// 精灵基类
 import {DataStore} from "./DataStore.js";
 
 export class Sprite {
@@ -8,10 +7,8 @@ export class Sprite {
                 srcY = 0,
                 srcW = 0,
                 srcH = 0,
-                x = 0,
-                y = 0,
-                width = 0,
-                height = 0) {
+                x = 0, y = 0,
+                width = 0, height = 0) {
         this.dataStore = DataStore.getInstance();
         this.ctx = this.dataStore.ctx;
         this.img = img;
@@ -25,9 +22,10 @@ export class Sprite {
         this.height = height;
     }
 
-    static getImage(key) {
+    static getImage(key){
         return DataStore.getInstance().res.get(key);
     }
+
 
     draw(img = this.img,
          srcX = this.srcX,
