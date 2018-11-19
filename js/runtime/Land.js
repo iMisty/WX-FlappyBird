@@ -1,23 +1,25 @@
 import {Sprite} from "../base/Sprite.js";
 import {Director} from "../Director.js";
+import {DataStore} from "../base/DataStore.js";
 
-export class Land extends Sprite{
+export class Land extends Sprite {
 
     constructor() {
         const image = Sprite.getImage('land');
-        super(image,0,0,
-            image.width,image.height,
-            0,window.innerHeight - image.height,
+
+        super(image, 0, 0,
+            image.width, image.height,
+            0, DataStore.getInstance().canvas.height - image.height,
             image.width, image.height);
-        // 刷新坐标
+
         this.landX = 0;
-        // 移动速度
-        this.landSpeed = Director.getInstance().landSpeed;
+
+        this.landSpeed = Director.getInstance().moveSpeed;
     }
 
     draw() {
         this.landX = this.landX + this.landSpeed;
-        if(this.landX > (this.img.width - window.innerWidth)){
+        if (this.landX > (this.img.width - DataStore.getInstance().canvas.width)) {
             this.landX = 0;
         }
         super.draw(this.img,
