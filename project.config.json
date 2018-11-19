@@ -1,14 +1,15 @@
 {
-	"description": "项目配置文件。",
+	"description": "一个简单的Flappy Bird小游戏",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "game",
-	"libVersion": "1.9.94",
+	"libVersion": "2.4.0",
 	"appid": "wx72610425da38c208",
 	"projectname": "Flappy%20Bird",
 	"condition": {
