@@ -1,8 +1,8 @@
-// 变量缓存器
-export class DataStore{
+//变量缓存器
+export class DataStore {
 
     static getInstance() {
-        if(!DataStore.instance) {
+        if (!DataStore.instance) {
             DataStore.instance = new DataStore();
         }
         return DataStore.instance;
@@ -13,7 +13,7 @@ export class DataStore{
     }
 
     put(key, value) {
-        if(typeof value === 'function') {
+        if (typeof value === 'function') {
             value = new value();
         }
         this.map.set(key, value);
@@ -24,10 +24,9 @@ export class DataStore{
         return this.map.get(key);
     }
 
-    destory() {
+    destroy() {
         for (let value of this.map.values()) {
             value = null;
         }
     }
-
 }
